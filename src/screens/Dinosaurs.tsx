@@ -1,28 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { List, Card } from "antd";
-
-const dinosaurs = [
-  { name: "Tyrannosaurus Rex", description: "Large carnivorous dinosaur." },
-  {
-    name: "Triceratops",
-    description: "Herbivorous dinosaur with three horns.",
-  },
-  {
-    name: "Velociraptor",
-    description: "Small, fast, and intelligent predator.",
-  },
-  { name: "Brachiosaurus", description: "Tall herbivore with a long neck." },
-];
+import { useSetAtom, useAtom } from "jotai";
+import axios from "axios";
+import { dinosaursAtom } from "../atoms";
+import Loader from "../components/Loader";
+import type { Dinosaur } from "../atoms";
 
 const Dinosaurs: React.FC = () => {
+  const setDinosaurs = useSetAtom(dinosaursAtom);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [dinosaurs] = useAtom(dinosaursAtom); // Use useAtom to read the atom
+
+  useEffect(() => {
+    const fetchDinosaurs = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get<Dinosaur[]>(
+          "https://dinosaur-facts-api.shultzlab.com/dinosaurs"
+        );
+        setDinosaurs(response.data);
+      } catch (error) {
+        console.error("Error fetching dinosaurs:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchDinosaurs();
+  }, [setDinosaurs]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div style={{ padding: "24px" }}>
+      <h1 style={{ textAlign: "center" }}>Dinosaurs</h1>
       <List
-        grid={{ gutter: 16, column: 2 }}
+        grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }}
         dataSource={dinosaurs}
         renderItem={(dinosaur) => (
-          <List.Item>
-            <Card title={dinosaur.name}>{dinosaur.description}</Card>
+          <List.Item key={dinosaur.Name}>
+            <Card title={dinosaur.Name}>
+              <p>Description: {dinosaur.Description}</p>
+            </Card>
           </List.Item>
         )}
       />
