@@ -6,5 +6,6 @@ export interface Dinosaur {
 }
 
 const dinosaursAtom = atom<Dinosaur[]>([]);
+const randomDinosaur = atom<Dinosaur>()
 
-export { dinosaursAtom };
+export { dinosaursAtom, randomDinosaur };
