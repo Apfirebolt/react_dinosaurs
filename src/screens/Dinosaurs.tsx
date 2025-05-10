@@ -9,7 +9,12 @@ import type { Dinosaur } from "../atoms";
 const Dinosaurs: React.FC = () => {
   const setDinosaurs = useSetAtom(dinosaursAtom);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [searchText, setSearchText] = React.useState("");
   const [dinosaurs] = useAtom(dinosaursAtom); // Use useAtom to read the atom
+
+  const filteredDinosaurs = dinosaurs.filter((dinosaur) =>
+    dinosaur.Name.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   useEffect(() => {
     const fetchDinosaurs = async () => {
@@ -35,12 +40,33 @@ const Dinosaurs: React.FC = () => {
   return (
     <div style={{ padding: "24px" }}>
       <h1 style={{ textAlign: "center" }}>Dinosaurs</h1>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginBottom: "16px",
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Search Dinosaurs"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          style={{
+            width: "90%",
+            padding: "16px",
+            borderRadius: "4px",
+            border: "1px solid #ccc",
+          }}
+        />
+      </div>
       <List
         grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }}
-        dataSource={dinosaurs}
+        dataSource={filteredDinosaurs}
         renderItem={(dinosaur) => (
           <List.Item key={dinosaur.Name}>
-            <Card title={dinosaur.Name}>
+            <Card title={dinosaur.Name} style={{ backgroundColor: "#FAF6E9" }}>
               <p>Description: {dinosaur.Description}</p>
             </Card>
           </List.Item>

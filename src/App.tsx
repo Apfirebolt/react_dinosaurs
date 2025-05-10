@@ -1,19 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Dinosaurs from './screens/Dinosaurs';
 import Home from './screens/Home';
+import About from './screens/About';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const App: React.FC = () => (
   <Router>
     <div className="App">
-      <nav>
-        <Link to="/">Home</Link> | <Link to="/dinosaurs">Dinosaurs</Link>
-      </nav>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/dinosaurs" element={<Dinosaurs />} />
       </Routes>
+      <Footer />
     </div>
   </Router>
 );

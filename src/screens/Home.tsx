@@ -1,25 +1,13 @@
 import React from "react";
-import { Layout, Menu, Typography, Row, Col, Card } from "antd";
+import { Layout, Typography, Row, Col, Card } from "antd";
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 const Home: React.FC = () => {
   return (
     <Layout>
-      <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-        <div
-          className="logo"
-          style={{ color: "white", fontSize: "20px", fontWeight: "bold" }}
-        >
-          DinoWorld
-        </div>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1">Home</Menu.Item>
-          <Menu.Item key="2">About</Menu.Item>
-          <Menu.Item key="3">Contact</Menu.Item>
-        </Menu>
-      </Header>
+
       <Content style={{ padding: "50px", marginTop: 64 }}>
         <div
           className="site-layout-content"
@@ -50,9 +38,6 @@ const Home: React.FC = () => {
           </Row>
         </div>
       </Content>
-      <Footer style={{ textAlign: "center" }}>
-        DinoWorld ©2023 Created with Ant Design
-      </Footer>
     </Layout>
   );
 };
