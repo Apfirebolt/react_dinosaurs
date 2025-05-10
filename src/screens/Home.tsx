@@ -39,8 +39,15 @@ const Home: React.FC = () => {
           style={{ background: "#fff", padding: 24, minHeight: 380 }}
         >
           <Title level={2}>Welcome to DinoWorld</Title>
-
-          <Row gutter={[16, 16]}>
+            <img
+            src="https://musicart.xboxlive.com/7/ac6d5100-0000-0000-0000-000000000002/504/image.jpg"
+            alt="Dinosaur"
+            style={{ width: "100%", maxHeight: "300px", objectFit: "cover", marginBottom: "20px" }}
+            />
+          <Paragraph>
+            Discover the fascinating world of dinosaurs! Click the button below to learn more about a random dinosaur.
+          </Paragraph>
+          <Row gutter={[8, 8]}>
             <Col span={24}>
               <Card>
                 <Title level={4} id="dinosaur-title">

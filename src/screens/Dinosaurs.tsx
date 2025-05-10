@@ -38,7 +38,7 @@ const Dinosaurs: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: "24px" }}>
+    <div style={{ padding: "0.5rem 1rem" }}>
       <h1 style={{ textAlign: "center" }}>Dinosaurs</h1>
       <div
         style={{
@@ -66,7 +66,14 @@ const Dinosaurs: React.FC = () => {
         dataSource={filteredDinosaurs}
         renderItem={(dinosaur) => (
           <List.Item key={dinosaur.Name}>
-            <Card title={dinosaur.Name} style={{ backgroundColor: "#FAF6E9" }}>
+            <Card
+              title={
+                <div style={{ textAlign: "center", backgroundColor: "white", padding: "8px", borderRadius: "4px" }}>
+                  {dinosaur.Name}
+                </div>
+              }
+              style={{ backgroundColor: "#FAF6E9" }}
+            >
               <p>Description: {dinosaur.Description}</p>
             </Card>
           </List.Item>
