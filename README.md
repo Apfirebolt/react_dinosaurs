@@ -34,6 +34,10 @@ This app is designed to showcase information about dinosaurs, including their hi
 
 Happy exploring the world of dinosaurs!
 
+## Updates 
+
+- May 2025 : Tried using AG grid to display tables, but it seems it has compatibility issues with React 19 So ended up using tables from Ant design instead.
+
 ## State Management using Jotai
 
 Jotai is a lightweight state management library for React that uses atoms as the core building blocks for state. An atom represents a piece of state, and components that use an atom automatically re-render when the atom's state changes. Jotai provides a simple and flexible API, making it easy to manage both local and global state in your application without the need for complex boilerplate.
@@ -80,6 +84,10 @@ const setRandomDinosaur = useSetAtom(randomDinosaur);
 ```
 
 You can render {dinosaur} inside your React template, this template would be re-rendered automatically if this atom changes.
+
+## Support
+
+If you like this project, please consider giving it a ⭐ on [GitHub](https://github.com/react_dinosaurs). Your support is greatly appreciated and motivates me to keep building awesome projects!
 
 
 
