@@ -8,6 +8,7 @@ const menuItems = [
   { key: "1", label: "Home", path: "/" },
   { key: "2", label: "Dinosaurs", path: "/dinosaurs" },
   { key: "3", label: "About", path: "/about" },
+  { key: "4", label: "Editor", path: "/editor" }, // Added Editor link
 ];
 
 const AppHeader: React.FC = () => {

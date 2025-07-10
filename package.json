@@ -11,8 +11,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@uiw/react-md-editor": "^4.0.7",
     "antd": "^5.25.1",
     "axios": "^1.9.0",
+    "bulma": "^1.0.4",
     "jotai": "^2.12.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
