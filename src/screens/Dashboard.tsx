@@ -1,11 +1,16 @@
 // components/Dashboard.tsx
 import { Card, Typography, Spin, Alert, Empty, Row, Col } from 'antd';
 import useDinosaurData from '../hooks/useDinosaurData';
+import { useContext } from 'react';
+import { UserContext } from '../App';
 
 const { Title, Paragraph } = Typography;
 
 const Dashboard = () => {
     const { dinosaurs, loading, error } = useDinosaurData();
+    const { user } = useContext(UserContext);
+
+    console.log('User context:', user);
 
     if (loading) {
         return (

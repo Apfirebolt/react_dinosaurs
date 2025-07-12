@@ -1,15 +1,20 @@
-import React from "react";
-import { Layout, Typography, Row, Col, Card } from "antd";
+import React, { use } from "react";
+import { Layout, Typography, Row, Col, Card, Button } from "antd";
 import { useAtom } from "jotai";
 import { randomDinosaur } from "../atoms";
+import { UserContext } from "../App";
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 const About: React.FC = () => {
   const [dinosaur] = useAtom(randomDinosaur);
+  const { user, setUser } = use(UserContext);
 
-  console.log("Dinosaur data:", dinosaur);
+  const setUserData = () => {
+    setUser({ name: "Dino Enthusiast", age: 5 });
+  };
+
   return (
     <Layout>
       <Content style={{ padding: "50px", marginTop: 64 }}>
@@ -61,6 +66,9 @@ const About: React.FC = () => {
             </Col>
           </Row>
         </div>
+        <Button onClick={() => setUser({ name: 'Jane Doe', age: 30 })}>
+          Update User
+        </Button>
       </Content>
     </Layout>
   );
