@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Button } from "antd";
 import { useSetAtom, useAtom } from "jotai";
 import axios from "axios";
@@ -11,6 +11,7 @@ const { Title, Paragraph } = Typography;
 
 const Home: React.FC = () => {
   const setRandomDinosaur = useSetAtom(randomDinosaur);
+  const [randomNumber, setRandomNumber] = useState(() => Math.floor(Math.random() * 1000));
   const [isLoading, setIsLoading] = React.useState(true);
   const dinosaur = useAtom(randomDinosaur);
 
@@ -28,6 +29,12 @@ const Home: React.FC = () => {
     }
   };
 
+  setTimeout(() => {
+    // change the number every 5 seconds
+    const newRandomNumber = Math.floor(Math.random() * 1000);
+    setRandomNumber(newRandomNumber);
+  }, 5000);
+
   useEffect(() => {
     getRandomDinosaur();
   }, []);
@@ -39,7 +46,7 @@ const Home: React.FC = () => {
           className="site-layout-content"
           style={{ background: "#fff", padding: 24, minHeight: 380 }}
         >
-          <Hero />
+          <Hero randomNumber={randomNumber} />
           <Row gutter={[8, 8]}>
             <Col span={24}>
               <Card>

@@ -5,6 +5,7 @@ import Dinosaurs from './screens/Dinosaurs';
 import Home from './screens/Home';
 import About from './screens/About';
 import Editor from './screens/Editor';
+import Dashboard from './screens/Dashboard';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -17,6 +18,7 @@ const App: React.FC = () => (
         <Route path="/about" element={<About />} />
         <Route path="/dinosaurs" element={<Dinosaurs />} />
         <Route path="/editor" element={<Editor />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </div>

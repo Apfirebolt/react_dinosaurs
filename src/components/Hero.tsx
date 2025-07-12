@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Typography, Space } from 'antd';
 
 const { Title, Paragraph } = Typography;
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  randomNumber: number;
+}
+
+const Hero: React.FC<HeroProps> = (props) => {
+    const { randomNumber } = props;
+
+    console.log("Random Number:", randomNumber);
+
+    useEffect(() => {
+        // This effect can be used to perform side effects related to the random number
+        console.log("Hero component mounted with random number:", randomNumber);
+    }, [])
+
     return (
         <div style={{
             background: 'linear-gradient(135deg, #1890ff 0%, #096dd9 100%)',
